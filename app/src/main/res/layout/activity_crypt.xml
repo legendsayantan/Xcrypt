@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme"
+    android:clipChildren="false"
+    tools:context=".CryptActivity">
+
+    <com.borutsky.neumorphism.NeumorphicFrameLayout
+        android:id="@+id/neumorphicFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        app:background_color="@color/theme"
+        app:corner_radius="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape="rectangle"
+        app:state="concave"
+        tools:layout_editor_absoluteX="50dp">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Your 16-digit Crypt key" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:inputType="textPassword"
+            android:maxLength="16" />
+    </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+    <com.borutsky.neumorphism.NeumorphicFrameLayout
+        android:id="@+id/neumorphicFrameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:padding="10dp"
+        app:background_color="@color/theme"
+        app:corner_radius="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/neumorphicFrameLayout"
+        app:shape="rectangle"
+        app:state="concave"
+        tools:layout_editor_absoluteX="50dp">
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:orientation="vertical">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:text="Xcrypt settings" />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:orientation="horizontal">
+
+               <CheckBox
+                   android:id="@+id/encrypt"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="15dp"
+                   android:buttonTint="@color/teal_700"
+                   android:text="Encrypt" />
+
+               <CheckBox
+                   android:id="@+id/decrypt"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="15dp"
+                   android:buttonTint="@color/teal_700"
+                   android:text="Decrypt" />
+           </LinearLayout>
+           <CheckBox
+               android:id="@+id/delete"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:buttonTint="@color/teal_700"
+               android:text="Delete old file after Xcrypt"/>
+       </LinearLayout>
+
+
+    </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:layout_marginTop="400dp">
+        <com.borutsky.neumorphism.NeumorphicFrameLayout
+            android:id="@+id/startbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:background_color="@color/theme"
+            android:foregroundGravity="center"
+            app:corner_radius="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="50dp"
+            app:shape="rectangle"
+            app:state="flat"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
+                    android:text="Start Xcrypt" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+
+            </LinearLayout>
+            <ScrollView
+                android:id="@+id/status"
+                android:visibility="gone"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                    <TextView
+                        android:text="Xcrypt status"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </ScrollView>
+        </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
