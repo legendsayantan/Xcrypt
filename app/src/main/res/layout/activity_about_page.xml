@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme"
+    android:clipChildren="false"
+    tools:context=".AboutPage">
+
+    <com.borutsky.neumorphism.NeumorphicFrameLayout
+        android:id="@+id/neumorphicFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        app:background_color="@color/theme"
+        app:corner_radius="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape="rectangle"
+        app:state="flat">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/full_logo" />
+
+            <TextView
+                android:id="@+id/textVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="165dp"
+                android:text="Version Information"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="185dp"
+                android:text="From LegendSayantan."
+                android:textColorLink="@color/teal_700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+    <com.borutsky.neumorphism.NeumorphicFrameLayout
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="25dp"
+        android:padding="15dp"
+        app:background_color="@color/theme"
+        app:corner_radius="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/neumorphicFrameLayout"
+        app:shape="rectangle"
+        app:state="flat"
+        android:clipChildren="false"
+        tools:layout_editor_absoluteX="50dp">
+
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/textView6"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete All saved Filepaths" />
+
+
+    </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="400dp">
+
+        <com.borutsky.neumorphism.NeumorphicFrameLayout
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:foregroundGravity="center"
+            app:background_color="@color/theme"
+            app:corner_radius="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:shape="rectangle"
+            app:state="flat"
+            tools:layout_editor_absoluteX="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_baseline_code_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Source code"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+        <com.borutsky.neumorphism.NeumorphicFrameLayout
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:foregroundGravity="center"
+            app:background_color="@color/theme"
+            app:corner_radius="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/code"
+            app:shape="rectangle"
+            app:state="flat"
+            tools:layout_editor_absoluteX="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_outline_public_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Website"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.borutsky.neumorphism.NeumorphicFrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

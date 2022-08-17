@@ -5,6 +5,7 @@ import static android.hardware.biometrics.BiometricManager.Authenticators.DEVICE
 import static android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Executor;
 
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
+
 public class CryptActivity extends AppCompatActivity {
     EditText key;
     TextView info;
@@ -61,6 +64,7 @@ public class CryptActivity extends AppCompatActivity {
     int success,fail,skip;
     long time,resetTime;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,26 +84,11 @@ public class CryptActivity extends AppCompatActivity {
         sview=findViewById(R.id.status);
         button=findViewById(R.id.button);
         encrypt.setChecked(sharedPreferences.getBoolean("encrypt",false));
-        encrypt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                editor.putBoolean("encrypt",isChecked).apply();
-            }
-        });
+        encrypt.setOnCheckedChangeListener((buttonView, isChecked) -> editor.putBoolean("encrypt",isChecked).apply());
         decrypt.setChecked(sharedPreferences.getBoolean("decrypt",false));
-        decrypt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                editor.putBoolean("decrypt",isChecked).apply();
-            }
-        });
+        decrypt.setOnCheckedChangeListener((buttonView, isChecked) -> editor.putBoolean("decrypt",isChecked).apply());
         delete.setChecked(sharedPreferences.getBoolean("delete",false));
-        delete.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                editor.putBoolean("delete",isChecked).apply();
-            }
-        });
+        delete.setOnCheckedChangeListener((buttonView, isChecked) -> editor.putBoolean("delete",isChecked).apply());
         key.setText(sharedPreferences.getString("key",""));
         key.addTextChangedListener(new TextWatcher() {
             @Override
@@ -134,7 +123,6 @@ public class CryptActivity extends AppCompatActivity {
         try {
             if(!getIntent().getStringArrayListExtra("files").toString().equals("")){
                 files=getIntent().getStringArrayListExtra("files");
-                System.out.println(files);
             }
             permission();
             success=fail=skip=0;
@@ -169,10 +157,8 @@ public class CryptActivity extends AppCompatActivity {
         time=System.currentTimeMillis();
         resetTime=System.currentTimeMillis();
         for(String str : files){
-            System.out.println(str);
             String[] parts = str.split("\\.");
             String ext = parts[parts.length-1];
-            System.out.println(ext);
             if(ext.contains("xcrypt_")){
                 if(decrypt.isChecked()) {
                     printInfo("Decrypting " + str);
@@ -207,7 +193,7 @@ public class CryptActivity extends AppCompatActivity {
                 if (encrypt.isChecked()) {
                     printInfo("Encrypting " + str);
                     try {
-                        new CryptoUtils().encrypt(key.getText().toString(), new File(str), new File(str.replace(ext, "xcrypt_" + ext)));
+                        CryptoUtils.encrypt(key.getText().toString(), new File(str), new File(str.replace(ext, "xcrypt_" + ext)));
                         if (new File(str.replace(ext, "xcrypt_" + ext)).exists()) {
                             printInfo("Encrypted " + str +", took "+getResetTime());
                             success++;
@@ -242,7 +228,6 @@ public class CryptActivity extends AppCompatActivity {
             }
         },2000);
 
-        System.out.println("Modifystatus true");
         saveArrayList(results,"filepaths");
     }
     public void permission(){
@@ -252,7 +237,6 @@ public class CryptActivity extends AppCompatActivity {
                 startActivity(new Intent(ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
             else {
-                System.out.println("storage write granted");
             }
         }else{
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -260,10 +244,10 @@ public class CryptActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
             }
             else {
-                System.out.println("storage write granted");
             }
         }
     }
+    @SuppressLint("StaticFieldLeak")
     public void createTaskA() {
         taskA = new AsyncTask<Void, Void, Void>() {
             @Override
@@ -278,30 +262,23 @@ public class CryptActivity extends AppCompatActivity {
         taskA.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
     public void printInfo(String information){
-        sview.post(new Runnable() {
-            @Override
-            public void run() {
-                cryptrun=true;
-                sview.setVisibility(View.VISIBLE);
-                button.setVisibility(View.GONE);
-                info.setText(info.getText()+"\n\n"+information);
-                sview.fullScroll(View.FOCUS_DOWN);
-            }
+        sview.post(() -> {
+            cryptrun=true;
+            sview.setVisibility(View.VISIBLE);
+            button.setVisibility(View.GONE);
+            info.setText(info.getText()+"\n\n"+information);
+            sview.fullScroll(View.FOCUS_DOWN);
         });
     }
     public void printInfo(String information,boolean ignored){
-        sview.post(new Runnable() {
-            @Override
-            public void run() {
-                cryptrun=true;
-                sview.setVisibility(View.VISIBLE);
-                button.setVisibility(View.GONE);
-                info.setText(info.getText()+"\n"+information);
-                sview.fullScroll(View.FOCUS_DOWN);
-            }
+        sview.post(() -> {
+            cryptrun=true;
+            sview.setVisibility(View.VISIBLE);
+            button.setVisibility(View.GONE);
+            info.setText(info.getText()+"\n"+information);
+            sview.fullScroll(View.FOCUS_DOWN);
         });
     }
-
     @Override
     public void onLowMemory() {
         FancyToast.makeText(getApplicationContext(),"Low memory available, cannot process",FancyToast.LENGTH_LONG,FancyToast.WARNING,false).show();

@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/drawable/dialog_bg.xml" value="0.19" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2175" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15729166666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_crypt.xml" value="0.14" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/drawable/ic_outline_insert_drive_file_24.xml" value="0.231" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout-land/activity_main.xml" value="0.2830269345874305" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_about_page.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_crypt.xml" value="0.22" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_exception.xml" value="0.15364583333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_file.xml" value="0.10364583333333334" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/layout/dialog.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Xcrypt/app/src/main/res/xml/file_paths.xml" value="0.10731081658828559" />
       </map>
     </option>
   </component>

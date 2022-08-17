@@ -103,28 +103,72 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="50dp"
-            android:maxHeight="250dp"
             android:padding="10dp"
             app:background_color="@color/theme"
             app:corner_radius="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:clipChildren="false"
             app:shape="rectangle"
             app:state="concave">
 
-            <TextView
-                android:id="@+id/textbox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="No Files Selected" />
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:orientation="horizontal">
+                <com.borutsky.neumorphism.NeumorphicFrameLayout
+                    android:clickable="true"
+                    app:background_color="@color/theme"
+                    app:state="pressed"
+                    android:layout_marginStart="10dp"
+                    app:corner_radius="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shape="circle">
+                    <ImageView
+                        android:id="@+id/singleOp"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:src="@drawable/ic_outline_insert_drive_file_24"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:contentDescription="single file" />
+                </com.borutsky.neumorphism.NeumorphicFrameLayout>
+                <TextView
+                    android:id="@+id/textbox"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="No Files Selected" />
+                <com.borutsky.neumorphism.NeumorphicFrameLayout
+                    android:clickable="true"
+                    app:background_color="@color/theme"
+                    app:state="pressed"
+                    app:corner_radius="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shape="circle">
+                    <ImageView
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:id="@+id/about"
+                        android:src="@drawable/ic_outline_info_24"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                </com.borutsky.neumorphism.NeumorphicFrameLayout>
+            </LinearLayout>
 
             <ListView
                 android:id="@+id/fileList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp" />
+
+
         </com.borutsky.neumorphism.NeumorphicFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
