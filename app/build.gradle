@@ -30,12 +30,13 @@ android {
     }
 }
 dependencies {
+    //added counter to reload gradle : 1
     implementation 'io.github.shashank02051997:FancyToast:2.0.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "androidx.biometric:biometric:1.1.0"
     implementation 'com.github.TutorialsAndroid:FilePicker:v8.0.19'
     implementation 'com.github.Borutsky:neumorphism-android:1.0.0-alpha01'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     testImplementation 'junit:junit:4.+'
